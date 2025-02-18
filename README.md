@@ -1,5 +1,5 @@
 # 使用教程 (2版):
-
+原作者（类脑dc）：[aexk233.](https://discord.com/channels/1134557553011998840/1341413677504663643)
 ## 1. 获取 Grok 的 auth_bearer 和 auth_token:
 
 同一开始写的，不变
