@@ -28,7 +28,7 @@
                   id: meta
                   uses: docker/metadata-action@v5  # 使用 Docker 官方的 metadata Action
                   with:
-                    images: ghcr.io/${{ github.repository_owner }}/your-image-name  # 你的镜像名称
+                    images: ghcr.io/${{ github.repository_owner }}/grok-proxy  # 你的镜像名称
                     tags: |
                       type=ref,event=branch
                       type=ref,event=pr
