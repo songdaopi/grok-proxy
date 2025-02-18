@@ -1,10 +1,10 @@
-使用教程 (2版):
+# 使用教程 (2版):
 
-1. 获取 Grok 的 auth_bearer 和 auth_token:
+## 1. 获取 Grok 的 auth_bearer 和 auth_token:
 
 同一开始写的，不变
 
-2. 获取 Grok 的 conversationId:
+## 2. 获取 Grok 的 conversationId:
 
 仍然在 Grok 网页版 (https://grok.x.com/) 上。
 
@@ -19,7 +19,33 @@
 
 注意: 每个新的聊天会话都有不同的 conversationId。如果你想在 SillyTavern 中维持上下文，你需要使用同一个 conversationId。
 
-3. 部署和运行 openai-to-grok-proxy2.py:
+## 3. 部署和运行 openai-to-grok-proxy2.py:
+
+### 附：使用docker部署
+使用 Docker 运行 openai-to-grok-proxy2 简易教程
+
+**1. 拉取镜像：**
+
+```bash
+docker pull ghcr.io/songdaopi/grok-proxy:latest
+```
+
+**2. 运行容器：**
+
+```bash
+docker run -d -p 11451:11451 --name openai-grok-proxy ghcr.io/songdaopi/grok-proxy:latest
+```
+
+*   `-d`: 后台运行。
+*   `-p 11451:11451`: 端口映射，将宿主机的 11451 端口映射到容器的 11451 端口。
+*   `--name openai-grok-proxy`: 容器命名。
+
+**3. 测试：**
+
+现在，你可以通过访问 `http://<your_host_ip>:11451/v1/chat/completions` 来使用代理服务了。将 `<your_host_ip>` 替换为你的服务器 IP 地址或 `localhost`（如果你在本地运行）。
+
+**可选：** 使用 `docker logs -f openai-grok-proxy` 实时查看容器日志。
+
 
 确保你已经安装了 Python 和 Flask, requests 库。 如果没有安装，请使用 pip 安装。
 
