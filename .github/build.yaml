@@ -1,0 +1,45 @@
+          name: Build and Push to GHCR
+
+          on:
+            push:
+              branches: [ "main" ]
+            pull_request:
+              branches: [ "main" ]
+
+          jobs:
+            build-and-publish:
+              runs-on: ubuntu-latest
+              permissions:
+                contents: read
+                packages: write  # 需要写入 packages 的权限
+
+              steps:
+                - name: Checkout repository
+                  uses: actions/checkout@v4
+
+                - name: Log in to the Container registry
+                  uses: docker/login-action@v3  # 使用官方的 Docker login Action
+                  with:
+                    registry: ghcr.io
+                    username: ${{ github.repository_owner }} # 使用 GitHub 内置的变量
+                    password: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 自动提供的 token
+
+                - name: Extract metadata (tags, labels) for Docker
+                  id: meta
+                  uses: docker/metadata-action@v5  # 使用 Docker 官方的 metadata Action
+                  with:
+                    images: ghcr.io/${{ github.repository_owner }}/your-image-name  # 你的镜像名称
+                    tags: |
+                      type=ref,event=branch
+                      type=ref,event=pr
+                      type=semver,pattern={{version}}
+                      type=semver,pattern={{major}}.{{minor}}
+                      type=sha
+
+                - name: Build and push Docker image
+                  uses: docker/build-push-action@v5  # 使用 Docker 官方的 build-push Action
+                  with:
+                    context: .
+                    push: true
+                    tags: ${{ steps.meta.outputs.tags }}
+                    labels: ${{ steps.meta.outputs.labels }}
