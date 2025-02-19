@@ -19,4 +19,4 @@ ENV FLASK_APP=openai-to-grok-proxy3.py
 ENV GROK_MODEL_OPTION_ID=grok-3
 
 # 运行应用
-CMD ["flask", "run", "--port=11451"]
+CMD ["python", "openai-to-grok-proxy3.py"] 
