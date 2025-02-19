@@ -16,7 +16,7 @@ EXPOSE 11451
 # 定义环境变量 (可选，但推荐)
 ENV GROK_API_URL=https://grok.x.com/2/grok/add_response.json
 ENV FLASK_APP=openai-to-grok-proxy3.py
-ENV GROK_MODEL_OPTION_ID=grok-3
+ENV GROK_MODEL_OPTION_ID=grok-2
 
 # 运行应用
 CMD ["python", "openai-to-grok-proxy3.py"] 
