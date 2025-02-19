@@ -28,13 +28,13 @@
 **1. 拉取镜像：**
 
 ```bash
-docker pull ghcr.io/songdaopi/grok-proxy:latest
+docker pull ghcr.io/songdaopi/grok-proxy:main
 ```
 
 **2. 运行容器：**
 
 ```bash
-docker run -d -p 11451:11451 --name openai-grok-proxy ghcr.io/songdaopi/grok-proxy:latest
+docker run -d -p 11451:11451 --name openai-grok-proxy ghcr.io/songdaopi/grok-proxy:main
 ```
 
 *   `-d`: 后台运行。
