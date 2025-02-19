@@ -35,6 +35,7 @@
                       type=semver,pattern={{version}}
                       type=semver,pattern={{major}}.{{minor}}
                       type=sha
+                      type=semver,pattern=latest
 
                 - name: Build and push Docker image
                   uses: docker/build-push-action@v5  # 使用 Docker 官方的 build-push Action
