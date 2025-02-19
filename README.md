@@ -21,9 +21,8 @@
 注意: 每个新的聊天会话都有不同的 conversationId。如果你想在 SillyTavern 中维持上下文，你需要使用同一个 conversationId。
 
 ## 3. 部署和运行 openai-to-grok-proxy2.py:
-好的，这是一个使用 Docker 部署 `openai-to-grok-proxy` 的简易教程（假设镜像已公开）：
 
-### 附录使用 Docker 部署 OpenAI 到 Grok 的代理服务
+### 附录：使用 Docker 部署 OpenAI 到 Grok 的代理服务
 
 **步骤：**
 
@@ -41,13 +40,13 @@
     使用以下命令运行容器：
 
     ```bash
-    docker run -d -p 11451:11451 --name grok-proxy -e GROK_MODEL_OPTION_ID=grok-3 ghcr.io/songdaopi/openai-to-grok-proxy:main
+    docker run -d -p 11451:11451 --name grok-proxy -e GROK_MODEL_OPTION_ID=grok-2 ghcr.io/songdaopi/openai-to-grok-proxy:main
     ```
 
     *   `-d`: 后台运行容器。
     *   `-p 11451:11451`: 将主机的 11451 端口映射到容器的 11451 端口。
     *   `--name grok-proxy`: 为容器指定一个名称。
-    *   `-e GROK_MODEL_OPTION_ID=grok-3`: 设置环境变量, 可选.
+    *   `-e GROK_MODEL_OPTION_ID=grok-3`: 如果你的账户为 premium+ 且已解锁 Grok-3 模型，可以在变量中将grok-2改为grok-3
     *   `ghcr.io/songdaopi/openai-to-grok-proxy:main` 镜像名称和标签。
 
 4.  **测试服务:**
