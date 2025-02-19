@@ -33,21 +33,21 @@
     打开终端或命令行，运行以下命令拉取镜像：
 
     ```bash
-    docker pull ghcr.io/songdaopi/openai-to-grok-proxy:main
+    docker pull ghcr.io/songdaopi/grok-proxy:main
     ```
 
 3.  **运行容器:**
     使用以下命令运行容器：
 
     ```bash
-    docker run -d -p 11451:11451 --name grok-proxy -e GROK_MODEL_OPTION_ID=grok-2 ghcr.io/songdaopi/openai-to-grok-proxy:main
+    docker run -d -p 11451:11451 --name grok-proxy -e GROK_MODEL_OPTION_ID=grok-2 ghcr.io/songdaopi/grok-proxy:main
     ```
 
     *   `-d`: 后台运行容器。
     *   `-p 11451:11451`: 将主机的 11451 端口映射到容器的 11451 端口。
     *   `--name grok-proxy`: 为容器指定一个名称。
     *   `-e GROK_MODEL_OPTION_ID=grok-3`: 如果你的账户为 premium+ 且已解锁 Grok-3 模型，可以在变量中将grok-2改为grok-3
-    *   `ghcr.io/songdaopi/openai-to-grok-proxy:main` 镜像名称和标签。
+    *   `ghcr.io/songdaopi/grok-proxy:main` 镜像名称和标签。
 
 4.  **测试服务:**
     现在，您可以通过向 `http://<您的主机IP>:11451/v1/chat/completions` 发送 OpenAI 风格的 API 请求来测试代理服务。请将 `<您的主机IP>` 替换为您的机器的 IP 地址。您也可以通过访问`http://<您的主机IP>:11451/models`查看模型列表。
